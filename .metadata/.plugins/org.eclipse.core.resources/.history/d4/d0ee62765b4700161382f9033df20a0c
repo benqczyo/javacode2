@@ -1,0 +1,31 @@
+package com.benqcz.xml.test;
+
+import org.dom4j.Element;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.benqcz.xml.utils.Dom4jUtils;
+
+public class TestDom4j {
+	
+	public Element root;
+	
+	@Before
+	public void init() {
+		root = Dom4jUtils.open().getRootElement();
+	}
+	
+	@After
+	public void destroy() {
+		root = null;
+	}
+	
+	@Test
+	public void getAuthorOfSecondBook() {
+		Element secondBook = (Element) root.elements("Êé").get(1);
+		Element author = secondBook.element("×÷Õß");
+		System.out.println(author.getTextTrim());
+	}
+
+}

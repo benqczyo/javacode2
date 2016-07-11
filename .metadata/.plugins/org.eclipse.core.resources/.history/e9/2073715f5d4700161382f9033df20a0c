@@ -1,0 +1,50 @@
+package com.benqcz.xml.test;
+
+import java.util.List;
+
+import org.dom4j.Element;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.benqcz.xml.utils.Dom4jUtils;
+
+import junit.framework.Assert;
+
+public class TestDom4j {
+	
+	public Element root;
+	
+	@Before
+	public void enter() {
+		root = Dom4jUtils.open().getRootElement();
+	}
+	
+	@After
+	public void quit() {
+		root = null;
+		
+	}
+	
+	@Test
+	public void getAuthorOfSecondBook() {
+		Element secondBook = (Element) root.elements("书").get(1);
+		Element author = secondBook.element("作者");
+		Assert.assertEquals("毕向东", author.getTextTrim());
+	}
+	
+	@Test
+	public void listAllElments() {
+		treeWalk(root, "");
+	}
+
+	private void treeWalk(Element element, String deep) {
+		if (element.getNodeType() == Element.ELEMENT_NODE) {
+			System.out.println(deep + element.getName());
+			List<Element> elements = element.elements();
+			for (Element e : elements)
+				treeWalk(e, deep + "\t");
+		}
+	}
+
+}

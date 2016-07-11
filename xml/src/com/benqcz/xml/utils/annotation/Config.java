@@ -10,6 +10,7 @@ import javax.lang.model.element.Element;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Config {
-	String value();
+	String value() default "";
 	String path() default "";
+	String encoding() default "";
 }

@@ -14,4 +14,6 @@
 <fullyQualifiedTypeName name="org.dom4j.io.OutputFormat"/>
 <fullyQualifiedTypeName name="org.w3c.dom.DOMException"/>
 <fullyQualifiedTypeName name="com.benqcz.xml.utils.exception.Dom4jUtilsException"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="org.dom4j.Element"/>
 </qualifiedTypeNameHistroy>
