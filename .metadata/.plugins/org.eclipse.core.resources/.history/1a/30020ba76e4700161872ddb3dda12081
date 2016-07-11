@@ -80,7 +80,6 @@ public class TestDom4j {
 				Element element = DocumentHelper.createElement("ÄÚ²¿¼Û");
 				element.setText("45");
 				elements.add(i, element);
-				break;
 			}
 	}
 	

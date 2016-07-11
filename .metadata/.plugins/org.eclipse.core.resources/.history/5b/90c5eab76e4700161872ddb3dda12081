@@ -79,7 +79,7 @@ public class TestDom4j {
 			if (elements.get(i).getName().equalsIgnoreCase("售价")) {
 				Element element = DocumentHelper.createElement("内部价");
 				element.setText("45");
-				elements.add(i, element);
+				elements.set(i, element);
 				break;
 			}
 	}

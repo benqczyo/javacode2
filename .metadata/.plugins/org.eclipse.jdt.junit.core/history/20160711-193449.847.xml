@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="TestDom4j" project="xml" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.benqcz.xml.test.TestDom4j" time="0.084">
-    <testcase name="getAuthorOfSecondBook" classname="com.benqcz.xml.test.TestDom4j" time="0.084"/>
-  </testsuite>
-</testrun>

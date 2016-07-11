@@ -3,7 +3,6 @@ package com.benqcz.xml.test;
 import java.util.List;
 
 import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.junit.After;
 import org.junit.Assert;
@@ -61,27 +60,4 @@ public class TestDom4j {
 		Element price = secondBook.element("售价");
 		price.setText("1000");
 	}
-	
-	@Test
-	public void addPriceToFirstBook() {
-		isModify = true;
-		Element firstBook = (Element) root.elements("书").get(0);
-		Element price = firstBook.addElement("批发价");
-		price.setText("150");
-	}
-	
-	@Test
-	public void insertPriceToFirstBook() {
-		isModify = true;
-		Element firstBook = (Element) root.elements("书").get(0);
-		List<Element> elements = firstBook.elements();
-		for (int i = 0; i < elements.size(); i++)
-			if (elements.get(i).getName().equalsIgnoreCase("售价")) {
-				Element element = DocumentHelper.createElement("内部价");
-				element.setText("45");
-				elements.add(i, element);
-				break;
-			}
-	}
-	
 }
