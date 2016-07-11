@@ -1,0 +1,62 @@
+package com.benqcz.xml.utils;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+import javax.sql.rowset.spi.XmlWriter;
+import javax.xml.stream.XMLOutputFactory;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+import org.w3c.dom.DOMException;
+
+import com.benqcz.xml.utils.annotation.Config;
+import com.benqcz.xml.utils.exception.Dom4jUtilsException;
+
+@Config("book.xml")
+public class Dom4jUtils {
+	
+	private static String filePath;
+	
+	static {
+		try {
+			Class clazz = Dom4jUtils.class;
+			Config config = (Config) clazz.getAnnotation(Config.class);
+			String path = config.value().trim();
+			path = path.isEmpty() ? config.path().trim() : path;
+			filePath = clazz.getClassLoader().getResource(path).getPath();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static Document open() {
+		try {
+			return new SAXReader().read(filePath);
+		} catch (Exception e) {
+			throw new Dom4jUtilsException(e);
+		}
+	}
+	
+	public static void save(Document document) {
+		try {
+			FileOutputStream fos = new FileOutputStream(filePath);
+			OutputFormat format = OutputFormat.createPrettyPrint();
+			XMLWriter writer = new XMLWriter(fos, format);
+			writer.write(document);
+			writer.close();
+		} catch (Exception e) {
+			throw new Dom4jUtilsException(e);
+		}
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(open());
+	}
+	
+}

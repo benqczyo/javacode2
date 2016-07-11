@@ -1,0 +1,5 @@
+package com.benqcz.xml.utils.exception;
+
+public class Dom4jUtilsException extends RuntimeException {
+
+}

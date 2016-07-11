@@ -1,0 +1,19 @@
+package com.benqcz.xml.utils;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
+
+import com.benqcz.xml.utils.exception.Dom4jUtilsException;
+
+public class Dom4jUtils {
+	
+	public static Document open(String filePath) {
+		try {
+			return new SAXReader().read(filePath);
+		} catch (Exception e) {
+			throw new Dom4jUtilsException(e);
+		}
+	}
+	
+}

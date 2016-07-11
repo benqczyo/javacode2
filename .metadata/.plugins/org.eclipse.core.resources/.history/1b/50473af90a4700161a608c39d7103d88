@@ -1,0 +1,34 @@
+package com.benqcz.xml.utils;
+
+import javax.xml.stream.XMLOutputFactory;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+
+import com.benqcz.xml.utils.annotation.Config;
+import com.benqcz.xml.utils.exception.Dom4jUtilsException;
+
+@Config("books.xml")
+public class Dom4jUtils {
+	
+	private static String filePath;
+	
+	static {
+		
+	}
+	
+	public static Document open() {
+		try {
+			return new SAXReader().read(filePath);
+		} catch (Exception e) {
+			throw new Dom4jUtilsException(e);
+		}
+	}
+	
+	public static void save(Document document) {
+		document.get
+	}
+	
+}
