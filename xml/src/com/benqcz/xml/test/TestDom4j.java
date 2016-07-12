@@ -84,4 +84,25 @@ public class TestDom4j {
 			}
 	}
 	
+	@Test
+	public void delPriceFromFirstBook() {
+		isModify = true;
+		Element firstBook = (Element) root.element("书");
+		Element price = firstBook.element("内部价");
+		firstBook.remove(price);
+	}
+	
+	@Test
+	public void addAttrToFirstBook() {
+		isModify = true;
+		Element firstBook = (Element) root.element("书");
+		firstBook.addAttribute("出版社", "机械工业出版社");
+	}
+	
+	@Test
+	public void getAttrOfFirstBook() {
+		Element firstBook = (Element) root.element("书");
+		Assert.assertEquals("机械工业出版社", firstBook.attributeValue("出版社"));
+	}
+	
 }
